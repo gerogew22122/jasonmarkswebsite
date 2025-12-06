@@ -129,13 +129,13 @@ const LandingPage = () => {
       />
       
       {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
-        <span className="text-xl font-bold tracking-tighter">JM.</span>
-        <div className="flex gap-2">
-          <a href="https://www.instagram.com/marksjasonfrederick" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center bg-zinc-950/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
+        <span className="text-xl font-bold tracking-tighter text-white">JM.</span>
+        <div className="flex gap-4">
+          <a href="https://www.instagram.com/marksjasonfrederick" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
             <FaInstagram size={24} />
           </a>
-          <a href="https://www.tiktok.com/@coolsweat6762" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+          <a href="https://www.tiktok.com/@coolsweat6762" target="_blank" rel="noopener noreferrer" className="text-white hover:text-primary transition-colors">
             <FaTiktok size={24} />
           </a>
         </div>
