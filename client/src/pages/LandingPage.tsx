@@ -1,7 +1,6 @@
-import React from "react";
-import { FaInstagram, FaTiktok, FaArrowRight, FaShoppingCart } from "react-icons/fa";
-import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
+import React, { useRef } from "react";
+import { FaInstagram, FaTiktok, FaArrowRight, FaShoppingCart, FaStar } from "react-icons/fa";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import backgroundTexture from "@assets/generated_images/dark_modern_abstract_background_with_subtle_digital_money_patterns.png";
 import personalBrandingImg from "@assets/generated_images/futuristic_personal_branding_concept_with_neon_glowing_fingerprint_or_identity_symbol.png";
@@ -13,7 +12,8 @@ const products = [
     label: "The Money Mindset",
     image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdyb2ZkZThnd3Nlbzlpb2tvNnVxdmlleWU0eTB1enllam9pNXdvZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/F4nBKBWxcWzcdMJX2W/giphy.gif",
     price: "$999.95",
-    originalPrice: "$1,999.95"
+    originalPrice: "$1,999.95",
+    tag: "BEST SELLER"
   },
   {
     id: 2,
@@ -21,7 +21,8 @@ const products = [
     label: "1 on 1 Call With Me",
     image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHAwY2d3Y2czN2ozY2c5MWJjcHJpZWNveDI5bTRva2FmamY0NHhrZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KpOqvmCFdNMhF0pQb7/giphy.gif",
     price: "$299.95",
-    originalPrice: null
+    originalPrice: null,
+    tag: "EXCLUSIVE"
   },
   {
     id: 3,
@@ -29,7 +30,8 @@ const products = [
     label: "The Ultimate Glow Up Guide 2025",
     image: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTZkZ3g0N3JycmMwdWtxZHN5cHdpc2k1c2s2MzlwbG9nM2l2b2VyZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2n6UHtrc1VgxmMwX8f/giphy.gif",
     price: "$79.95",
-    originalPrice: "$159.95"
+    originalPrice: "$159.95",
+    tag: "NEW"
   },
   {
     id: 4,
@@ -37,7 +39,8 @@ const products = [
     label: "The Ultimate 10 Minute Home Workout",
     image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXR0a2N5cGszeGI1Zzk1c2FpbnVuaTZmd2Z5cHBjbjM5Y2JtbTlpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qNj41KxhsoiQ0/giphy.gif",
     price: "$49.95",
-    originalPrice: "$99.95"
+    originalPrice: "$99.95",
+    tag: "FITNESS"
   },
   {
     id: 5,
@@ -45,140 +48,164 @@ const products = [
     label: "The Ultimate Personal Branding Guide",
     image: personalBrandingImg,
     price: "$19.95",
-    originalPrice: "$49.95"
+    originalPrice: "$49.95",
+    tag: "ESSENTIAL"
   },
 ];
 
-const LandingPage = () => {
+const ProductSection = ({ product, index }: { product: typeof products[0], index: number }) => {
   return (
-    <div className="min-h-screen w-full text-white overflow-x-hidden bg-background relative selection:bg-primary selection:text-black">
-      {/* Background Image with Overlay */}
+    <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-10%" }}
+      transition={{ duration: 0.8, delay: 0.1 }}
+      className="w-full min-h-[70vh] md:min-h-[60vh] flex flex-col justify-center relative py-12"
+    >
+      <a href={product.url} target="_blank" rel="noopener noreferrer" className="group block w-full">
+        <div className="relative w-full aspect-[4/5] md:aspect-[16/9] overflow-hidden rounded-none md:rounded-3xl border-y md:border border-white/10 md:hover:border-primary/50 transition-colors duration-500">
+          {/* Image Background */}
+          <div className="absolute inset-0 bg-black">
+            <img 
+              src={product.image} 
+              alt={product.label}
+              className="w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-105 transition-all duration-700"
+            />
+          </div>
+          
+          {/* Content Overlay */}
+          <div className="absolute inset-0 flex flex-col justify-between p-6 md:p-12 bg-gradient-to-t from-black via-transparent to-transparent">
+            <div className="flex justify-between items-start">
+              <span className="bg-primary text-black text-xs font-bold px-3 py-1 uppercase tracking-wider">
+                {product.tag}
+              </span>
+              <div className="h-10 w-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-primary group-hover:text-black transition-colors duration-300">
+                <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <h2 className="text-4xl md:text-6xl font-bold uppercase leading-[0.9] text-white group-hover:text-primary transition-colors duration-300">
+                {product.label}
+              </h2>
+              
+              <div className="flex items-center gap-4 border-t border-white/20 pt-4 mt-4">
+                <div className="flex flex-col">
+                  <span className="text-xs text-muted-foreground uppercase tracking-wider">Price</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-2xl font-mono font-bold text-primary">{product.price}</span>
+                    {product.originalPrice && (
+                      <span className="text-sm font-mono text-muted-foreground line-through decoration-destructive">{product.originalPrice}</span>
+                    )}
+                  </div>
+                </div>
+                <Button className="ml-auto rounded-full px-8 py-6 text-lg font-bold bg-white text-black hover:bg-primary hover:text-black transition-all duration-300">
+                  GET ACCESS
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    </motion.div>
+  );
+};
+
+const LandingPage = () => {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
+  return (
+    <div className="min-h-screen w-full bg-black text-white selection:bg-primary selection:text-black font-sans">
+      {/* Fixed Background */}
       <div 
-        className="fixed inset-0 z-0 opacity-40"
+        className="fixed inset-0 z-0 opacity-30 pointer-events-none"
         style={{
           backgroundImage: `url(${backgroundTexture})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
       />
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-transparent via-background/90 to-background" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20 flex flex-col items-center gap-8">
-        {/* Header Section */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-2"
-        >
-          <div className="inline-block rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary border border-primary/20 mb-4 backdrop-blur-sm">
-            BRISBANE, AU
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-none text-glow">
-            Content<br/>
-            <span className="text-primary">To Cash</span>
-          </h1>
-          <p className="text-muted-foreground text-lg font-light tracking-wide pt-2">
-            Jason Marks
-          </p>
-        </motion.div>
-
-        {/* Social Links */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex gap-4 w-full justify-center mb-8"
-        >
-          <a 
-            href="https://www.instagram.com/marksjasonfrederick" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group"
-          >
-            <Button variant="outline" size="lg" className="h-14 w-14 rounded-full border-white/10 bg-white/5 hover:bg-primary hover:text-black hover:border-primary transition-all duration-300">
-              <FaInstagram className="h-6 w-6" />
-            </Button>
+      
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-6 flex justify-between items-center mix-blend-difference">
+        <span className="text-xl font-bold tracking-tighter">JM.</span>
+        <div className="flex gap-2">
+          <a href="https://www.instagram.com/marksjasonfrederick" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            <FaInstagram size={24} />
           </a>
-          <a 
-            href="https://www.tiktok.com/@coolsweat6762" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="group"
-          >
-            <Button variant="outline" size="lg" className="h-14 w-14 rounded-full border-white/10 bg-white/5 hover:bg-primary hover:text-black hover:border-primary transition-all duration-300">
-              <FaTiktok className="h-5 w-5" />
-            </Button>
+          <a href="https://www.tiktok.com/@coolsweat6762" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+            <FaTiktok size={24} />
           </a>
-        </motion.div>
-
-        {/* Products Section - Masonry/Grid Layout */}
-        <div className="w-full space-y-8">
-          <motion.div
-             initial={{ opacity: 0, y: 20 }}
-             animate={{ opacity: 1, y: 0 }}
-             transition={{ duration: 0.5, delay: 0.3 }}
-             className="flex items-center justify-between border-b border-white/10 pb-4"
-          >
-             <h2 className="text-xl font-bold uppercase tracking-tight">Shop Products</h2>
-             <span className="text-xs text-muted-foreground uppercase tracking-widest">Digital Collection</span>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {products.map((product, index) => (
-              <motion.a
-                key={product.id}
-                href={product.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 + (index * 0.1) }}
-                className={`block group relative ${index === 0 ? "md:col-span-2" : ""}`}
-              >
-                <Card className="h-full bg-zinc-900/40 border-white/5 hover:border-primary/50 transition-all duration-500 backdrop-blur-sm overflow-hidden group-hover:shadow-[0_0_30px_-10px_rgba(34,197,94,0.3)]">
-                  <div className="relative aspect-[16/9] md:aspect-[21/9] overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent z-10" />
-                    <img 
-                      src={product.image} 
-                      alt={product.label}
-                      className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                    />
-                    
-                    <div className="absolute bottom-0 left-0 w-full p-6 z-20 flex items-end justify-between">
-                       <div>
-                          <h3 className="font-bold text-xl md:text-2xl text-white mb-2 group-hover:text-primary transition-colors leading-tight max-w-[80%]">
-                            {product.label}
-                          </h3>
-                          <div className="flex items-center gap-3">
-                            <span className="font-mono text-lg text-primary font-bold">{product.price}</span>
-                            {product.originalPrice && (
-                              <span className="font-mono text-sm text-muted-foreground line-through decoration-red-500/50">{product.originalPrice}</span>
-                            )}
-                          </div>
-                       </div>
-                       
-                       <Button size="sm" className="bg-white text-black hover:bg-primary hover:text-black font-bold rounded-full px-6 transition-all duration-300 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0">
-                         Buy Now
-                       </Button>
-                    </div>
-                  </div>
-                </Card>
-              </motion.a>
-            ))}
-          </div>
         </div>
+      </nav>
 
-        {/* Footer */}
-        <motion.footer 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="text-center text-xs text-muted-foreground mt-20 pb-8 w-full border-t border-white/5 pt-8"
-        >
-          <p>© 2025 Jason Marks. All rights reserved.</p>
-        </motion.footer>
-      </div>
+      <main className="relative z-10 max-w-7xl mx-auto px-0 md:px-6">
+        {/* Hero Section */}
+        <section className="min-h-screen flex flex-col justify-center items-center text-center py-20 px-4 relative overflow-hidden">
+           <motion.div 
+             style={{ y }}
+             className="relative z-10"
+           >
+             <motion.div 
+               initial={{ opacity: 0, y: 20 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ duration: 0.8 }}
+               className="mb-6 flex justify-center"
+             >
+               <span className="px-4 py-1.5 rounded-full border border-white/20 text-sm font-mono tracking-widest bg-white/5 backdrop-blur-md">
+                 BRISBANE • AUSTRALIA
+               </span>
+             </motion.div>
+             
+             <motion.h1 
+               initial={{ opacity: 0, scale: 0.9 }}
+               animate={{ opacity: 1, scale: 1 }}
+               transition={{ duration: 0.8, delay: 0.2 }}
+               className="text-[12vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter uppercase mix-blend-screen"
+             >
+               Content<br />
+               <span className="text-transparent bg-clip-text bg-gradient-to-b from-primary via-primary/80 to-transparent">To Cash</span>
+             </motion.h1>
+             
+             <motion.p 
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ duration: 0.8, delay: 0.4 }}
+               className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-md mx-auto font-light"
+             >
+               Stop leaving money on the table. Turn your digital presence into a revenue machine.
+             </motion.p>
+           </motion.div>
+
+           {/* Scroll Indicator */}
+           <motion.div 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ delay: 1, duration: 1 }}
+             className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+           >
+             <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Scroll</span>
+             <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
+           </motion.div>
+        </section>
+
+        {/* Editorial Product Feed */}
+        <section className="pb-32 space-y-0 md:space-y-12">
+          <div className="px-6 md:px-0 mb-12 flex items-baseline justify-between border-b border-white/10 pb-4">
+            <h3 className="text-sm font-mono text-muted-foreground">COLLECTION 01</h3>
+            <h3 className="text-sm font-mono text-primary">[ 2025 ]</h3>
+          </div>
+          
+          {products.map((product, index) => (
+            <ProductSection key={product.id} product={product} index={index} />
+          ))}
+        </section>
+        
+        <footer className="py-12 text-center border-t border-white/10 text-muted-foreground text-sm">
+           <p>&copy; 2025 JASON MARKS. ALL RIGHTS RESERVED.</p>
+        </footer>
+      </main>
     </div>
   );
 };
