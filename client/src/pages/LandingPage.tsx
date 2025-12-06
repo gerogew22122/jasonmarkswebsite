@@ -9,7 +9,7 @@ import profilePhoto from "@assets/image_1764985020684.png";
 const products = [
   {
     id: 5,
-    url: "https://shop.beacons.ai/jason.marks6762/13ec095f-9a8c-4b15-8e11-0abd5e6bb5f7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    url: "https://shop.beacons.ai/jason.marks6762/5d33383b-06ed-492d-b08e-748451030fe7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
     label: "The Ultimate Personal Branding Guide",
     image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmQ2M2hyOXl3YjQ2aWFzcHg3cjJjdnlsM205bXNldzk2dGx2cWsyayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0xeAqBxu7wd3Ie0o/giphy.gif",
     price: "$19.95",
@@ -18,7 +18,7 @@ const products = [
   },
   {
     id: 4,
-    url: "https://shop.beacons.ai/jason.marks6762/409b557b-2287-4c2d-8db9-bf5aa4f64c78?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    url: "https://shop.beacons.ai/jason.marks6762/b29b88ad-80e1-4b01-ab5c-07931cbcfb90?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
     label: "The Ultimate 10 Minute Home Workout",
     image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXR0a2N5cGszeGI1Zzk1c2FpbnVuaTZmd2Z5cHBjbjM5Y2JtbTlpbCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qNj41KxhsoiQ0/giphy.gif",
     price: "$49.95",
@@ -36,7 +36,7 @@ const products = [
   },
   {
     id: 2,
-    url: "https://shop.beacons.ai/jason.marks6762/b29b88ad-80e1-4b01-ab5c-07931cbcfb90?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    url: "https://shop.beacons.ai/jason.marks6762/409b557b-2287-4c2d-8db9-bf5aa4f64c78?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
     label: "1 on 1 Call With Me",
     image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHAwY2d3Y2czN2ozY2c5MWJjcHJpZWNveDI5bTRva2FmamY0NHhrZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KpOqvmCFdNMhF0pQb7/giphy.gif",
     price: "$299.95",
@@ -45,7 +45,7 @@ const products = [
   },
   {
     id: 1,
-    url: "https://shop.beacons.ai/jason.marks6762/5d33383b-06ed-492d-b08e-748451030fe7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    url: "https://shop.beacons.ai/jason.marks6762/13ec095f-9a8c-4b15-8e11-0abd5e6bb5f7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
     label: "The Money Mindset",
     image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdyb2ZkZThnd3Nlbzlpb2tvNnVxdmlleWU0eTB1enllam9pNXdvZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/F4nBKBWxcWzcdMJX2W/giphy.gif",
     price: "$999.95",
