@@ -11,7 +11,7 @@ const products = [
     id: 5,
     url: "https://shop.beacons.ai/jason.marks6762/13ec095f-9a8c-4b15-8e11-0abd5e6bb5f7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
     label: "The Ultimate Personal Branding Guide",
-    image: personalBrandingImg,
+    image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZmQ2M2hyOXl3YjQ2aWFzcHg3cjJjdnlsM205bXNldzk2dGx2cWsyayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/xT0xeAqBxu7wd3Ie0o/giphy.gif",
     price: "$19.95",
     originalPrice: "$49.95",
     tag: "ESSENTIAL"
