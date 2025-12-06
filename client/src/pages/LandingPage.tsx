@@ -4,34 +4,17 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import backgroundTexture from "@assets/generated_images/dark_modern_abstract_background_with_subtle_digital_money_patterns.png";
 import personalBrandingImg from "@assets/generated_images/futuristic_personal_branding_concept_with_neon_glowing_fingerprint_or_identity_symbol.png";
+import profilePhoto from "@assets/image_1764985020684.png";
 
 const products = [
   {
-    id: 1,
-    url: "https://shop.beacons.ai/jason.marks6762/5d33383b-06ed-492d-b08e-748451030fe7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
-    label: "The Money Mindset",
-    image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdyb2ZkZThnd3Nlbzlpb2tvNnVxdmlleWU0eTB1enllam9pNXdvZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/F4nBKBWxcWzcdMJX2W/giphy.gif",
-    price: "$999.95",
-    originalPrice: "$1,999.95",
-    tag: "BEST SELLER"
-  },
-  {
-    id: 2,
-    url: "https://shop.beacons.ai/jason.marks6762/b29b88ad-80e1-4b01-ab5c-07931cbcfb90?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
-    label: "1 on 1 Call With Me",
-    image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHAwY2d3Y2czN2ozY2c5MWJjcHJpZWNveDI5bTRva2FmamY0NHhrZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KpOqvmCFdNMhF0pQb7/giphy.gif",
-    price: "$299.95",
-    originalPrice: null,
-    tag: "EXCLUSIVE"
-  },
-  {
-    id: 3,
-    url: "https://shop.beacons.ai/jason.marks6762/8ec64a7f-7102-49de-bb62-495569610324?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
-    label: "The Ultimate Glow Up Guide 2025",
-    image: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTZkZ3g0N3JycmMwdWtxZHN5cHdpc2k1c2s2MzlwbG9nM2l2b2VyZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2n6UHtrc1VgxmMwX8f/giphy.gif",
-    price: "$79.95",
-    originalPrice: "$159.95",
-    tag: "NEW"
+    id: 5,
+    url: "https://shop.beacons.ai/jason.marks6762/13ec095f-9a8c-4b15-8e11-0abd5e6bb5f7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    label: "The Ultimate Personal Branding Guide",
+    image: personalBrandingImg,
+    price: "$19.95",
+    originalPrice: "$49.95",
+    tag: "ESSENTIAL"
   },
   {
     id: 4,
@@ -43,13 +26,31 @@ const products = [
     tag: "FITNESS"
   },
   {
-    id: 5,
-    url: "https://shop.beacons.ai/jason.marks6762/13ec095f-9a8c-4b15-8e11-0abd5e6bb5f7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
-    label: "The Ultimate Personal Branding Guide",
-    image: personalBrandingImg,
-    price: "$19.95",
-    originalPrice: "$49.95",
-    tag: "ESSENTIAL"
+    id: 3,
+    url: "https://shop.beacons.ai/jason.marks6762/8ec64a7f-7102-49de-bb62-495569610324?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    label: "The Ultimate Glow Up Guide 2025",
+    image: "https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTZkZ3g0N3JycmMwdWtxZHN5cHdpc2k1c2s2MzlwbG9nM2l2b2VyZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2n6UHtrc1VgxmMwX8f/giphy.gif",
+    price: "$79.95",
+    originalPrice: "$159.95",
+    tag: "NEW"
+  },
+  {
+    id: 2,
+    url: "https://shop.beacons.ai/jason.marks6762/b29b88ad-80e1-4b01-ab5c-07931cbcfb90?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    label: "1 on 1 Call With Me",
+    image: "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExaHAwY2d3Y2czN2ozY2c5MWJjcHJpZWNveDI5bTRva2FmamY0NHhrZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KpOqvmCFdNMhF0pQb7/giphy.gif",
+    price: "$299.95",
+    originalPrice: null,
+    tag: "EXCLUSIVE"
+  },
+  {
+    id: 1,
+    url: "https://shop.beacons.ai/jason.marks6762/5d33383b-06ed-492d-b08e-748451030fe7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
+    label: "The Money Mindset",
+    image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdyb2ZkZThnd3Nlbzlpb2tvNnVxdmlleWU0eTB1enllam9pNXdvZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/F4nBKBWxcWzcdMJX2W/giphy.gif",
+    price: "$999.95",
+    originalPrice: "$1,999.95",
+    tag: "BEST SELLER"
   },
 ];
 
@@ -145,12 +146,30 @@ const LandingPage = () => {
         <section className="min-h-screen flex flex-col justify-center items-center text-center py-20 px-4 relative overflow-hidden">
            <motion.div 
              style={{ y }}
-             className="relative z-10"
+             className="relative z-10 flex flex-col items-center"
            >
+             <motion.div 
+               initial={{ opacity: 0, scale: 0.5 }}
+               animate={{ opacity: 1, scale: 1 }}
+               transition={{ duration: 0.8, type: "spring" }}
+               className="mb-8 relative"
+             >
+               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-white/10 shadow-[0_0_40px_-10px_rgba(34,197,94,0.3)]">
+                 <img 
+                   src={profilePhoto} 
+                   alt="Jason Marks" 
+                   className="w-full h-full object-cover"
+                 />
+               </div>
+               <div className="absolute -bottom-2 -right-2 bg-primary text-black text-xs font-bold px-3 py-1 rounded-full border-2 border-black">
+                 AU
+               </div>
+             </motion.div>
+
              <motion.div 
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 0.8 }}
+               transition={{ duration: 0.8, delay: 0.2 }}
                className="mb-6 flex justify-center"
              >
                <span className="px-4 py-1.5 rounded-full border border-white/20 text-sm font-mono tracking-widest bg-white/5 backdrop-blur-md">
@@ -161,7 +180,7 @@ const LandingPage = () => {
              <motion.h1 
                initial={{ opacity: 0, scale: 0.9 }}
                animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 0.8, delay: 0.2 }}
+               transition={{ duration: 0.8, delay: 0.3 }}
                className="text-[12vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter uppercase mix-blend-screen"
              >
                Content<br />
@@ -171,7 +190,7 @@ const LandingPage = () => {
              <motion.p 
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
-               transition={{ duration: 0.8, delay: 0.4 }}
+               transition={{ duration: 0.8, delay: 0.5 }}
                className="mt-8 text-xl md:text-2xl text-muted-foreground max-w-md mx-auto font-light"
              >
                Stop leaving money on the table. Turn your digital presence into a revenue machine.
