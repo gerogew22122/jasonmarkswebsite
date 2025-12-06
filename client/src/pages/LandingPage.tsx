@@ -12,8 +12,8 @@ const products = [
     url: "https://shop.beacons.ai/jason.marks6762/5d33383b-06ed-492d-b08e-748451030fe7?pageViewSource=lib_view&referrer=https%3A%2F%2Fbeacons.ai%2Fjason.marks6762&show_back_button=true",
     label: "The Money Mindset",
     image: "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbWdyb2ZkZThnd3Nlbzlpb2tvNnVxdmlleWU0eTB1enllam9pNXdvZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/F4nBKBWxcWzcdMJX2W/giphy.gif",
-    price: "$19.95",
-    originalPrice: null
+    price: "$999.95",
+    originalPrice: "$1,999.95"
   },
   {
     id: 2,
